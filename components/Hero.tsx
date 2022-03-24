@@ -1,9 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
+import { useContext } from 'react'
+import AmazonContext from '../context/AmazonContext'
+import Modal from './Modal'
 
 const Hero = () => {
+  const { open, setOpen } = useContext(AmazonContext)
   return (
     <div>
+      <Modal />
       <div className="bg-[#232F3E] hidden lg:flex text-white  space-x-10 p-2 text-sm">
         <p className="ml-3">All</p>
         <p>Best Sellers</p>
@@ -14,6 +19,18 @@ const Hero = () => {
         <p>Fashion</p>
         <p>Prime</p>
         <p>New Releases</p>
+        <p
+          onClick={() => {
+            if (open == true) {
+              setOpen(false)
+            } else if (open == false) {
+              setOpen(true)
+            }
+          }}
+          className="cursor-pointer"
+        >
+          Sell
+        </p>
       </div>
 
       <div
