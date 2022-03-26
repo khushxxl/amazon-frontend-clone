@@ -31,6 +31,7 @@ export const AmazonProvider = ({ children }) => {
       const signer = provider.getSigner()
       console.log('Account:', await signer.getAddress())
       setCurrentAccount(await signer.getAddress())
+      window.reload()
     } catch (error) {
       console.log(error)
     }
@@ -38,13 +39,17 @@ export const AmazonProvider = ({ children }) => {
   const [ecomContract, setEcomContract] = useState()
 
   useEffect(async () => {
-    connectWallet()
-    const EcomContract = await getEthereumContract()
-    const productResult = await EcomContract.getProducts().then((result) => {
-      return result
-    })
-    setProducts(productResult)
-    setEcomContract(EcomContract)
+    try {
+      connectWallet()
+      const EcomContract = await getEthereumContract()
+      const productResult = await EcomContract.getProducts().then((result) => {
+        return result
+      })
+      setProducts(productResult)
+      setEcomContract(EcomContract)
+    } catch (error) {
+      console.log(error.message)
+    }
   }, [])
 
   return (

@@ -3,10 +3,10 @@ import React from 'react'
 import { useContext } from 'react'
 import AmazonContext from '../context/AmazonContext'
 
-const SignInBox = () => {
+const SignInBox = ({ img }) => {
   const { connectWallet } = useContext(AmazonContext)
   return (
-    <div className="flex items-center flex-col mt-2 ">
+    <div className="flex w-fit items-center flex-col mt-2 ">
       <div className="bg-white shadow-2xl h-fit w-full p-3  ml-2">
         <p className="text-xl font-bold">
           Connect Wallet for your better <br /> experience.
@@ -20,9 +20,7 @@ const SignInBox = () => {
         </div>
       </div>
 
-      <div className="mt-2">
-        <Image src={require('../images/laptopad.jpg')} />
-      </div>
+      <div className="mt-2">{img && <Image src={img} />}</div>
     </div>
   )
 }

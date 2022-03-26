@@ -149,7 +149,7 @@ export default function Modal() {
                         priceRef.current.value
                       )
                     } catch (error) {
-                      alert('REJECTED')
+                      alert(error.message)
                     }
                   }}
                 >

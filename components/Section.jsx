@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import AmazonContext from '../context/AmazonContext'
 
 const Section = ({ img, title, price, productId, myBool, seller, buyer }) => {
-  const { ecomContract } = useContext(AmazonContext)
+  const { ecomContract, currentAccount } = useContext(AmazonContext)
   const shortenAddress = (address) => {
     return `${address.slice(0, 5)}...${address.slice(address.length - 4)}`
   }
@@ -22,7 +22,7 @@ const Section = ({ img, title, price, productId, myBool, seller, buyer }) => {
             {/* <p className="text-xs font-bold">Price: </p> */}
             <p className="text-xl font-bold"> {price} ETH </p>
           </div>
-          {myBool == false && (
+          {myBool == false && buyer != currentAccount && (
             <div
               onClick={async () => {
                 try {
@@ -37,12 +37,12 @@ const Section = ({ img, title, price, productId, myBool, seller, buyer }) => {
             </div>
           )}
 
-          {buyer != '0x0000000000000000000000000000000000000000' && (
+          {buyer === currentAccount && (
             <div
               onClick={async () => {
                 try {
                   await ecomContract.delivery(productId, {
-                    gasLimit: '1000000',
+                    gasLimit: '0x100000',
                   })
                 } catch (error) {
                   alert(error.message)

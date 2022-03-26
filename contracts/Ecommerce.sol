@@ -42,8 +42,8 @@ products[_productId -1].buyer = msg.sender;
 
 function delivery(  uint _productId ) public {
   require(products[_productId -1 ].buyer == msg.sender , 'Seller cannot confirm delivery');
-  products[_productId -1 ].delivered = true;
-  products[_productId -1].seller.transfer(products[_productId -1].price);
+  products[_productId - 1 ].delivered = true;
+  products[_productId - 1].seller.transfer(products[_productId -1].price);
 
 
 }
