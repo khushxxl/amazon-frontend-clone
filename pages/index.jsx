@@ -1,17 +1,17 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
 import Section from '../components/Section.jsx'
-import Sections from '../components/Sections'
+
 import SignInBox from '../components/SignInBox.jsx'
 import Footer from '../components/Footer.js'
 import Script from 'next/script'
 import Laptop from '../components/Laptop'
 import BottomSection from '../components/BottomSection'
+import Sections from '../components/Sections'
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div className=" flex flex-col">
       <Head>
